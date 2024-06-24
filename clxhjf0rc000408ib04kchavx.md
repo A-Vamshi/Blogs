@@ -94,7 +94,7 @@ $$\theta_j := \theta_j - \alpha\sum(h_θ(x^i) - y^j)x_j^i)$$
 
 ### *Now let's implement this in code and build a linear regression model from scratch:*
 
-I'll be using this randomly created [dataset](https://www.kaggle.com/datasets/andonians/random-linear-regression?select=train.csv) for linear regression from [Kaggle](https://www.kaggle.com) as data for my model.
+I'll be using this salary [dataset](https://www.kaggle.com/code/shubham47/linear-regression-salary-dataset) for linear regression from [Kaggle](https://www.kaggle.com) as data for my model.
 
 First, we'll import pandas to read our CSV (comma-separated values) file, matplotlib.pyplot to visualize our data, and numpy since we're working with large arrays.
 
@@ -107,33 +107,33 @@ import matplotlib.pyplot as plt
 Now we'll import our data and visualise it in a graph
 
 ```python
-df = pd.read_csv("/kaggle/input/random-linear-regression/train.csv")
+df = pd.read_csv("/kaggle/input/salary-data-dataset-for-linear-regression/Salary_Data.csv")
 """ 
     Here I used "/kaggle/input/random-linear-regression/train.csv"
     because I'm doing this in my kaggle workspace if you're doing this 
     in your IDE then just give the path to your csv file here.
 """
-plt.scatter(df.x, df.y)
+plt.scatter(df.YearsExperience, df.Salary)
 plt.show()
 ```
 
-The "***read\_csv***" method reads and opens our data file, returning a pandas DataFrame. The "***plt.scatter***" method plots our data points on a graph, and the "***plt.show***" method displays the graph. The code above produces the following output. It's always important to analyze and visualize our data to determine which algorithm fits it best.
+The "***read\_csv***" method reads and opens our data file, returning a pandas DataFrame. The "***plt.scatter***" method plots our data points on a graph, and the "***plt.show***" method displays the graph. The code above produces the following output. It's always important to analyse and visualise our data to determine which algorithm fits it best.
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1718520818267/2a16b5a8-b6bb-49c6-9960-332a1ab0983d.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1719238740276/2d3f81a3-bf51-4fa9-8d2c-9077f5249003.png align="center")
 
 As we can see, the data appears to be scattered in a straight line. Therefore, we can confidently use linear regression, as we can fit a line of best fit here, as shown below:
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1718520990681/7d2dad1e-84a4-4bf1-a7c1-4a75ee23a72e.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1719238836860/03b4c542-5dcc-48fa-bfcc-440a9aa9eaf6.jpeg align="center")
 
 Now let's start preparing our data
 
 * We first need to separate the data into input and output parts, i.e., X and y.
     
 * ```python
-          m = df.shape[0]
-          X = np.hstack((np.ones((m,1)), df.x.values.reshape(-1,1)))
-          y = np.array(df.y.values).reshape(-1,1)
-          theta = np.zeros(shape=(X.shape[1],1))
+    m = df.shape[0]
+    X = np.hstack((np.ones((m,1)), df.YearsExperience.values.reshape(-1,1)))
+    y = np.array(df.Salary.values).reshape(-1,1)
+    theta = np.zeros(shape=(X.shape[1],1))
     ```
     
     Here In the first line m = df.shape\[0\] gives the number of rows we have in our dataset
@@ -146,9 +146,9 @@ Now let's start preparing our data
     
     * We used "***np.hstack***" to add the value 1 before every x data point, so it is internally represented as \[1, value\].
         
-        The "***reshape***" function is used to convert all the data points into a single column with 700 rows (The 700 here is only valid to the dataset I'm using your dataset might change this value). This is done using (-1, 1), where ***"-1"*** tells the program to figure out the dimension of the array by itself. For a clearer understanding, refer to the numpy documentation linked at the end of this blog.
+        The "***reshape***" function is used to convert all the data points into a single column with 30 rows (The 30 here is only valid to the dataset I'm using your dataset might change this value). This is done using (-1, 1), where ***"-1"*** tells the program to figure out the dimension of the array by itself. For a clearer understanding, refer to the numpy documentation linked at the end of this blog.
         
-        The Y values are also organized into an array with 700 rows and a single column using the same "***reshape***" method and -1 notation.
+        The Y values are also organized into an array with 30 rows and a single column using the same "***reshape***" method and -1 notation.
         
         Since we have 2 theta values, θ₀ and θ₁, we create an array with 2 rows and 1 column, initializing both theta values to 0 using the "***np.zeros***" method.
         
@@ -218,8 +218,8 @@ Now we just need to call the function with the correct arguments, and we're done
 
 ```python
 GradientDescent(theta, X, y)
-plt.scatter(df.x, df.y, color="black")
-plt.plot(list(range(0,100)), [theta[1][0] * x + theta[0][0] for x in range(0, 100)], color="red")
+plt.scatter(df.YearsExperience, df.Salary, color="black")
+plt.plot(list(range(0,14)), [theta[1][0] * x + theta[0][0] for x in range(0, 14)], color="red")
 plt.show()
 ```
 
@@ -229,9 +229,9 @@ Since our theta values are updated in the GradientDescent function, we can now c
 
 First, we scatter our data points and color them black.
 
-Since our X values range from 0 to 100, we will draw a straight line on the graph for all values from 0 to 100 using the line equation \[ mx + b \], with our theta values θ₀ = b and θ₁ = m. This gives us the following graph and line of best fit which is colored red.
+Since our X values range from 0 to 14, we will draw a straight line on the graph for all values from 0 to 14 using the line equation \[ mx + b \], with our theta values θ₀ = b and θ₁ = m. This gives us the following graph and line of best fit which is colored red.
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1718539541509/66d0906c-0d56-412b-b14c-a5554c47fc40.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1719239260010/35aa1f67-63c0-4202-b035-64fe7a4164da.png align="center")
 
 That's perfect.
 
@@ -242,17 +242,15 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("/kaggle/input/random-linear-regression/train.csv")
+
+df = pd.read_csv("/kaggle/input/salary-data-dataset-for-linear-regression/Salary_Data.csv")
 m = df.shape[0]
-X = np.hstack((np.ones((m,1)), df.x.values.reshape(-1,1)))
-y = np.array(df.y.values).reshape(-1,1)
+X = np.hstack((np.ones((m,1)), df.YearsExperience.values.reshape(-1,1)))
+y = np.array(df.Salary.values).reshape(-1,1)
 theta = np.zeros(shape=(X.shape[1],1))
-h = X.dot(theta)
-print()
 
 
-
-def GradientDescent(theta, X, y, alpha=0.01, epochs=300):
+def GradientDescent2(theta, X, y, alpha=0.01, epochs=300):
     for _ in range(epochs):
         for j in range(len(theta)):
             error = 0
@@ -262,9 +260,9 @@ def GradientDescent(theta, X, y, alpha=0.01, epochs=300):
             theta[j] -= alpha * error
         
         
-GradientDescent(theta, X, y, 0.01)
-plt.scatter(df.x, df.y, color="black")
-plt.plot(list(range(0,100)), [theta[1][0] * x + theta[0][0] for x in range(0, 100)], color="red")
+GradientDescent2(theta, X, y)
+plt.scatter(df.YearsExperience, df.Salary, color="black")
+plt.plot(list(range(0,14)), [theta[1][0] * x + theta[0][0] for x in range(0, 14)], color="red")
 plt.show()
 ```
 

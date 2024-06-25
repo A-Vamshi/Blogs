@@ -109,7 +109,7 @@ Now we'll import our data and visualise it in a graph
 ```python
 df = pd.read_csv("/kaggle/input/salary-data-dataset-for-linear-regression/Salary_Data.csv")
 """ 
-    Here I used "/kaggle/input/random-linear-regression/train.csv"
+    Here I used "/kaggle/input/salary-data-dataset-for-linear-regression/Salary_Data.csv"
     because I'm doing this in my kaggle workspace if you're doing this 
     in your IDE then just give the path to your csv file here.
 """
@@ -130,10 +130,10 @@ Now let's start preparing our data
 * We first need to separate the data into input and output parts, i.e., X and y.
     
 * ```python
-    m = df.shape[0]
-    X = np.hstack((np.ones((m,1)), df.YearsExperience.values.reshape(-1,1)))
-    y = np.array(df.Salary.values).reshape(-1,1)
-    theta = np.zeros(shape=(X.shape[1],1))
+      m = df.shape[0]
+      X = np.hstack((np.ones((m,1)), df.YearsExperience.values.reshape(-1,1)))
+      y = np.array(df.Salary.values).reshape(-1,1)
+      theta = np.zeros(shape=(X.shape[1],1))
     ```
     
     Here In the first line m = df.shape\[0\] gives the number of rows we have in our dataset

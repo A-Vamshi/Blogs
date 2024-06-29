@@ -140,20 +140,20 @@ Now let's start preparing our data
     
     Now to separate X values we're first making
     
-    x₀ = 1 and x₁ = value from dataset because of the following equation where we've clearly seen that x₀ must equal 1:
+    x₀ = 1 and x₁ = value from dataset because of the following equation where we've clearly seen that x₀ must equal 1
     
-    $$\displaylines{ y = θ_0x_0 + θ_1x_1 + θ_2x_2 + ... + θ_nx_n \\ y = \sum_{i=0}^n θ_ix_i \\ where \;\;\; x_0 = 1 \\ }$$
+
+$$\displaylines{ y = θ_0x_0 + θ_1x_1 + θ_2x_2 + ... + θ_nx_n \\ y = \sum_{i=0}^n θ_ix_i \\ where \;\;\; x_0 = 1 \\ }$$
+
+* We used "***np.hstack***" to add the value 1 before every x data point, so it is internally represented as \[1, value\].
     
-    * We used "***np.hstack***" to add the value 1 before every x data point, so it is internally represented as \[1, value\].
-        
-        The "***reshape***" function is used to convert all the data points into a single column with 30 rows (The 30 here is only valid to the dataset I'm using your dataset might change this value). This is done using (-1, 1), where ***"-1"*** tells the program to figure out the dimension of the array by itself. For a clearer understanding, refer to the numpy documentation linked at the end of this blog.
-        
-        The Y values are also organized into an array with 30 rows and a single column using the same "***reshape***" method and -1 notation.
-        
-        Since we have 2 theta values, θ₀ and θ₁, we create an array with 2 rows and 1 column, initializing both theta values to 0 using the "***np.zeros***" method.
-        
-        Now we have all the data we need to implement our algorithm
-        
+    The "***reshape***" function is used to convert all the data points into a single column with 30 rows (The 30 here is only valid to the dataset I'm using your dataset might change this value). This is done using (-1, 1), where ***"-1"*** tells the program to figure out the dimension of the array by itself. For a clearer understanding, refer to the numpy documentation linked at the end of this blog.
+    
+    The Y values are also organized into an array with 30 rows and a single column using the same "***reshape***" method and -1 notation.
+    
+    Since we have 2 theta values, θ₀ and θ₁, we create an array with 2 rows and 1 column, initializing both theta values to 0 using the "***np.zeros***" method.
+    
+    Now we have all the data we need to implement our algorithm
     
 
 ### *Gradient Descent :*

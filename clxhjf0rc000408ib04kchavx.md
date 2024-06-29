@@ -140,7 +140,7 @@ Now let's start preparing our data
     
     Now to separate X values we're first making
     
-    x₀ = 1 and x₁ = value from dataset because of the following equation where we've clearly seen that x₀ must equal 1
+    x₀ = 1 and x₁ = value from dataset because of the following equation where we've clearly seen that x₀ must equal 1:
     
     $$\displaylines{ y = θ_0x_0 + θ_1x_1 + θ_2x_2 + ... + θ_nx_n \\ y = \sum_{i=0}^n θ_ix_i \\ where \;\;\; x_0 = 1 \\ }$$
     

@@ -130,10 +130,10 @@ Now let's start preparing our data
 * We first need to separate the data into input and output parts, i.e., X and y.
     
 * ```python
-        m = df.shape[0]
-        X = np.hstack((np.ones((m,1)), df.YearsExperience.values.reshape(-1,1)))
-        y = np.array(df.Salary.values).reshape(-1,1)
-        theta = np.zeros(shape=(X.shape[1],1))
+          m = df.shape[0]
+          X = np.hstack((np.ones((m,1)), df.YearsExperience.values.reshape(-1,1)))
+          y = np.array(df.Salary.values).reshape(-1,1)
+          theta = np.zeros(shape=(X.shape[1],1))
     ```
     
     Here In the first line m = df.shape\[0\] gives the number of rows we have in our dataset
@@ -250,7 +250,7 @@ y = np.array(df.Salary.values).reshape(-1,1)
 theta = np.zeros(shape=(X.shape[1],1))
 
 
-def GradientDescent2(theta, X, y, alpha=0.01, epochs=300):
+def GradientDescent(theta, X, y, alpha=0.01, epochs=300):
     for _ in range(epochs):
         for j in range(len(theta)):
             error = 0
@@ -260,7 +260,7 @@ def GradientDescent2(theta, X, y, alpha=0.01, epochs=300):
             theta[j] -= alpha * error
         
         
-GradientDescent2(theta, X, y)
+GradientDescent(theta, X, y)
 plt.scatter(df.YearsExperience, df.Salary, color="black")
 plt.plot(list(range(0,14)), [theta[1][0] * x + theta[0][0] for x in range(0, 14)], color="red")
 plt.show()
